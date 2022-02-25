@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Mqttv3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Preference Titles -->
+    <string name="mqtt_header">MQTT</string>
+    <!-- mqtt Preferences -->
+    <string name="broker_title">MQTT Broker URL</string>
+    <string name="broker_key">broker_url</string>
+    <string name="broker_default">tcp://localhost:1883</string>
+
+    <string name="button_connect">Conn.</string>
+    <string name="button_disconnect">Discon.</string>
+</resources>
