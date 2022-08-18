@@ -64,4 +64,9 @@ class MqttViewModel(application: Application) : AndroidViewModel(application), M
             item!!.applyMessage(message)
         })
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        mqtt.disconnect()
+    }
 }
