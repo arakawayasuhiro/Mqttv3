@@ -12,7 +12,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
         val pref = findPreference<EditTextPreference>(getString(R.string.broker_key))
         pref?.run {
-            setOnPreferenceChangeListener { preference, newValue ->
+            setOnPreferenceChangeListener { _, newValue ->
                 model.brokerUrl.postValue(newValue as String)
                 true
             }

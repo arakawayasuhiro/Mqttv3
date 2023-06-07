@@ -1,6 +1,5 @@
 package com.examples.mqttv3
 
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -28,6 +27,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun getDefaultViewModelProviderFactory(): ViewModelProvider.Factory {
-        return vmFactory as ViewModelProvider.Factory
+        return vmFactory
     }
 }

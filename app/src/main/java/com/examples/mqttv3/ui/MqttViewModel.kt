@@ -14,7 +14,8 @@ class ItemTopic(val topic:String) {
     }
 }
 class MqttViewModelFactory(val app:Application): ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        @Suppress("UNCHECKED_CAST")
         return MqttViewModel(app) as T
     }
 }
@@ -53,16 +54,18 @@ class MqttViewModel(application: Application) : AndroidViewModel(application), M
     }
     val handler = Handler(Looper.getMainLooper())
     override fun onMessageArrived(topic: String, message: MqttMessage) {
-        handler.post(Runnable {
-            val list = topics.value!!.toMutableList()
-            var item = list.firstOrNull {it.topic.equals(topic)}
-            if (item == null) {
-                item = ItemTopic(topic)
-                list.add(item)
-                topics.value = list
+        handler.post(
+            {
+                val list = topics.value!!.toMutableList()
+                var item = list.firstOrNull {it.topic.equals(topic)}
+                if (item == null) {
+                    item = ItemTopic(topic)
+                    list.add(item)
+                    topics.value = list
+                }
+                item.applyMessage(message)
             }
-            item!!.applyMessage(message)
-        })
+        )
     }
 
     override fun onCleared() {

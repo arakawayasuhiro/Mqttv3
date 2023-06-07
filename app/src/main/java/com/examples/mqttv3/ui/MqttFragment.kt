@@ -21,6 +21,7 @@ class MqttFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
         ): View? {
+        @Suppress("DEPRECATION")
         setHasOptionsMenu(true)
         // Inflate the layout for this fragment
         val v =  inflater.inflate(R.layout.fragment_mqtt, container, false)
@@ -47,6 +48,7 @@ class MqttFragment : Fragment() {
         return v
     }
 
+    @Suppress("DEPRECATION")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_mqtt, menu)
